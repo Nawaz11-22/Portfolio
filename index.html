@@ -17,20 +17,8 @@
             --text-dim: #a0a0a0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Times New Roman', serif;
-            overflow-x: hidden;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--text-main); font-family: 'Times New Roman', serif; overflow-x: hidden; }
         h1, h2, h3, .logo, .btn-cv { font-family: 'Orbitron', sans-serif; }
 
         /* Navigation */
@@ -55,75 +43,38 @@
         .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
         .nav-links a:hover { color: var(--neon-blue); }
 
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            color: var(--neon-blue);
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 2000;
-            transition: 0.3s;
-        }
+        /* Icons */
+        .menu-toggle { display: none; color: var(--neon-blue); font-size: 1.8rem; cursor: pointer; }
+        .close-menu { display: none; color: var(--neon-red); font-size: 2rem; cursor: pointer; align-self: flex-end; margin-bottom: 30px; }
 
-        /* Hero Section */
+        /* Hero */
         section { padding: 120px 10%; }
         .hero { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; gap: 50px; }
         .glitch { font-size: clamp(2rem, 5vw, 4rem); color: yellowgreen; }
         
         .btn-cv {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 28px;
-            background: transparent;
-            color: var(--neon-blue);
-            border: 1px solid var(--neon-blue);
-            text-decoration: none;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .btn-cv:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: 0 0 20px var(--neon-blue);
+            display: inline-block; margin-top: 30px; padding: 12px 28px; background: transparent;
+            color: var(--neon-blue); border: 1px solid var(--neon-blue); text-decoration: none; transition: 0.3s;
         }
 
         .image-box { position: relative; width: 300px; height: 300px; flex-shrink: 0; }
         .blob {
-            width: 100%; height: 100%;
-            background: url('profile.png') center/cover;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 3px solid var(--neon-blue);
-            box-shadow: 0 0 30px var(--neon-blue);
-            animation: morph 8s ease-in-out infinite;
+            width: 100%; height: 100%; background: url('profile.png') center/cover;
+            border-radius: 30% 70% 70% 30%; border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue); animation: morph 8s ease-in-out infinite;
         }
 
         @keyframes morph { 0%, 100% { border-radius: 30% 70% 70% 30%; } 50% { border-radius: 50% 50% 33% 67%; } }
 
-        /* Projects */
-        .section-title { text-align: center; color: var(--neon-red); margin-bottom: 50px; letter-spacing: 4px; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--glass); padding: 30px; border-radius: 10px; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { border-color: var(--neon-blue); transform: translateY(-5px); }
-        .card h3 { color: yellowgreen; margin-bottom: 10px; }
-
         /* Responsive Fixes */
         @media (max-width: 768px) {
-            .menu-toggle { display: block; position: fixed; right: 20px; top: 20px; }
-            
+            .menu-toggle { display: block; }
+            .close-menu { display: block; } /* Show X inside the menu */
+
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 80%;
-                background: rgba(10, 10, 10, 0.98);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: 0.5s ease-in-out;
-                z-index: 1500;
-                border-left: 1px solid var(--neon-blue);
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 80%;
+                background: #0a0a0a; flex-direction: column; padding: 40px;
+                transition: 0.4s ease; z-index: 2000; border-left: 1px solid var(--neon-blue);
             }
 
             .nav-links.active { right: 0; }
@@ -131,14 +82,13 @@
             .image-box { width: 220px; height: 220px; }
         }
 
-        /* Contact Form */
-        .contact-box { max-width: 600px; margin: 0 auto; background: var(--glass); padding: 30px; border: 1px solid var(--neon-blue); border-radius: 10px; }
-        input, textarea { width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: #fff; margin-bottom: 15px; border-radius: 5px; outline: none; }
-        .btn-send { width: 100%; padding: 12px; background: var(--neon-red); color: #fff; border: none; cursor: pointer; font-weight: bold; }
+        /* Projects */
+        .section-title { text-align: center; color: var(--neon-red); margin-bottom: 50px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--glass); padding: 30px; border-radius: 10px; border: 1px solid #222; }
+        .card h3 { color: yellowgreen; }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid #222; margin-top: 50px; }
-        .socials { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
-        .socials a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
+        footer { padding: 40px; text-align: center; border-top: 1px solid #222; }
     </style>
 </head>
 <body>
@@ -146,12 +96,14 @@
     <nav>
         <div class="logo">NAWAZ.<span>WEB</span></div>
         <ul class="nav-links" id="navLinks">
+            <div class="close-menu" id="closeBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
             <li><a href="#home">HOME</a></li>
             <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#about">ABOUT</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
-        <div class="menu-toggle" id="menuToggle">
+        <div class="menu-toggle" id="openBtn">
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
@@ -164,9 +116,7 @@
             </p>
             <a href="cv.pdf" download class="btn-cv">DOWNLOAD CV</a>
         </div>
-        <div class="image-box">
-            <div class="blob"></div>
-        </div>
+        <div class="image-box"><div class="blob"></div></div>
     </section>
 
     <section id="projects">
@@ -174,50 +124,32 @@
         <div class="project-grid">
             <div class="card"><h3>01. QUANTUM_UI</h3><p>Server monitoring dashboard.</p></div>
             <div class="card"><h3>02. CYBER_SHIELD</h3><p>Encrypted messaging platform.</p></div>
-            <div class="card"><h3>03. REVERSE ENGINEERING</h3><p>APK and Binary analysis.</p></div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2 class="section-title">CONTACT</h2>
-        <div class="contact-box">
-            <form id="contact-form">
-                <input type="text" placeholder="NAME" required>
-                <input type="email" placeholder="EMAIL" required>
-                <textarea rows="4" placeholder="MESSAGE" required></textarea>
-                <button type="submit" class="btn-send">SEND MESSAGE</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <div class="socials">
-            <a href="https://github.com/Nawaz11-22" target="_blank">GITHUB</a>
-            <a href="https://www.linkedin.com/in/muhammad-nawaz-khan-07b526362/" target="_blank">LINKEDIN</a>
-        </div>
+    <footer id="contact">
         <p>&copy; 2026 MUHAMMAD NAWAZ KHAN</p>
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-        const icon = menuToggle.querySelector('i');
+        const openBtn = document.getElementById('openBtn');
+        const closeBtn = document.getElementById('closeBtn');
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            // Toggle between bars and X
-            if (navLinks.classList.contains('active')) {
-                icon.classList.replace('fa-bars', 'fa-xmark');
-            } else {
-                icon.classList.replace('fa-xmark', 'fa-bars');
-            }
+        // Open Menu
+        openBtn.addEventListener('click', () => {
+            navLinks.classList.add('active');
         });
 
-        // Close menu when a link is clicked
+        // Close Menu via X button
+        closeBtn.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+
+        // Close Menu when clicking any link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                icon.classList.replace('fa-xmark', 'fa-bars');
             });
         });
     </script>
